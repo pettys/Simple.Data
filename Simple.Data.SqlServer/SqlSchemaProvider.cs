@@ -25,7 +25,7 @@ namespace Simple.Data.SqlServer
 
         public IEnumerable<Table> GetTables()
         {
-            return GetSchema("TABLES").Select(SchemaRowToTable);
+            return GetSchema("TABLES").Select(SchemaRowToTable).Where(t => t.ActualName != "LeapTaggable");
         }
 
         private static Table SchemaRowToTable(DataRow row)
